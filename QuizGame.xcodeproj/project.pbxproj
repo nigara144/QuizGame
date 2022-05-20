@@ -16,6 +16,7 @@
 		772CFE4C2837B02E00BD41EA /* QuizGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CFE4B2837B02E00BD41EA /* QuizGameTests.swift */; };
 		772CFE562837B02E00BD41EA /* QuizGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CFE552837B02E00BD41EA /* QuizGameUITests.swift */; };
 		772CFE582837B02E00BD41EA /* QuizGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CFE572837B02E00BD41EA /* QuizGameUITestsLaunchTests.swift */; };
+		774A56C328382AFE00ECF891 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A56C228382AFE00ECF891 /* Question.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		772CFE512837B02E00BD41EA /* QuizGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CFE552837B02E00BD41EA /* QuizGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameUITests.swift; sourceTree = "<group>"; };
 		772CFE572837B02E00BD41EA /* QuizGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		774A56C228382AFE00ECF891 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				772CFE3D2837B02E00BD41EA /* Assets.xcassets */,
 				772CFE3F2837B02E00BD41EA /* LaunchScreen.storyboard */,
 				772CFE422837B02E00BD41EA /* Info.plist */,
+				774A56C228382AFE00ECF891 /* Question.swift */,
 			);
 			path = QuizGame;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				772CFE392837B02D00BD41EA /* ViewController.swift in Sources */,
+				774A56C328382AFE00ECF891 /* Question.swift in Sources */,
 				772CFE352837B02D00BD41EA /* AppDelegate.swift in Sources */,
 				772CFE372837B02D00BD41EA /* SceneDelegate.swift in Sources */,
 			);

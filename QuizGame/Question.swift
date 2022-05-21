@@ -10,4 +10,5 @@ import Foundation
 struct Question: Decodable {
     let answers: [String]
     let imageUrl: String
+    let correctAnswer: String
 }

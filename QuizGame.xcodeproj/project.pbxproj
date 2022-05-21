@@ -16,6 +16,7 @@
 		772CFE4C2837B02E00BD41EA /* QuizGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CFE4B2837B02E00BD41EA /* QuizGameTests.swift */; };
 		772CFE562837B02E00BD41EA /* QuizGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CFE552837B02E00BD41EA /* QuizGameUITests.swift */; };
 		772CFE582837B02E00BD41EA /* QuizGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772CFE572837B02E00BD41EA /* QuizGameUITestsLaunchTests.swift */; };
+		7740CE962838CEA6009CC20E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7740CE952838CEA6009CC20E /* GameViewController.swift */; };
 		774A56C328382AFE00ECF891 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A56C228382AFE00ECF891 /* Question.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		772CFE512837B02E00BD41EA /* QuizGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		772CFE552837B02E00BD41EA /* QuizGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameUITests.swift; sourceTree = "<group>"; };
 		772CFE572837B02E00BD41EA /* QuizGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7740CE952838CEA6009CC20E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		774A56C228382AFE00ECF891 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				772CFE3F2837B02E00BD41EA /* LaunchScreen.storyboard */,
 				772CFE422837B02E00BD41EA /* Info.plist */,
 				774A56C228382AFE00ECF891 /* Question.swift */,
+				7740CE952838CEA6009CC20E /* GameViewController.swift */,
 			);
 			path = QuizGame;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7740CE962838CEA6009CC20E /* GameViewController.swift in Sources */,
 				772CFE392837B02D00BD41EA /* ViewController.swift in Sources */,
 				774A56C328382AFE00ECF891 /* Question.swift in Sources */,
 				772CFE352837B02D00BD41EA /* AppDelegate.swift in Sources */,

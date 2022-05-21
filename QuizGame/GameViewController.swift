@@ -63,7 +63,6 @@ class GameViewController: UIViewController {
         if(currentQuestionNum + 1 < questions.count && livesCounter > 0){
             // set progress view
             self.progressView.progress = Float(Float(self.currentQuestionNum  + 1) / Float(self.questions.count))
-//            self.progressView.setProgress(Float((self.currentQuestionNum  + 1) / self.questions.count), animated: false)
             //get data from network
             print("image url ::::: \(questions[index].imageUrl)")
             let url = URL(string: questions[index].imageUrl)!
@@ -92,7 +91,6 @@ class GameViewController: UIViewController {
     
     @IBAction func onAnswerTap(sender: UIButton)
     {
-       // self.performSegue(withIdentifier: "StartGame", sender: self)
        print("ANSWER TAP")
         print(sender.tag)
         switch sender.tag {
@@ -133,17 +131,6 @@ class GameViewController: UIViewController {
         livesCounter -= 1
         livesNum.text = "x\(livesCounter)"
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "FirstScreen",
-//            let destination = segue.destination as? ViewController {
-//            print("im hereeeeeee")
-//            // pass through questions to destination view controller
-//            if(currentQuestionNum == questions.count || livesCounter == 0){
-//                destination.successCounter = String(successCounter)
-//            }
-//        }
-//    }
     
 }
 

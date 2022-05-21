@@ -96,26 +96,11 @@ class ViewController: UIViewController {
     
     @IBAction func onButtonTap()
     {
-//        self.performSegue(withIdentifier: "StartGame", sender: self)
-//        let vc = GameViewController(nibName: "GameViewController", bundle: nil)
-//        vc.questions = questions
-//        self.navigationController?.pushViewController(vc, animated: true)
-//
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let gameViewController = storyBoard.instantiateViewController(withIdentifier: "GameViewController") as! GameViewController
         gameViewController.questions = questions
         self.present(gameViewController, animated:true, completion:nil)
-    }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "SecondScreen",
-//            let destination = segue.destination as? GameViewController {
-//            // pass through questions to destination view controller
-//            destination.questions = questions
-//        }
-//    }
-
-    
+    }    
     
     override func viewDidLoad() {
         super.viewDidLoad()

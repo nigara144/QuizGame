@@ -24,11 +24,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var secondAnswer: UIButton!
     @IBOutlet weak var thirdAnswer: UIButton!
     @IBOutlet weak var forthAnswer: UIButton!
+    
+    
     var questions: [Question] = []
     var currentQuestionNum: Int = 0
-    
-    
+    var successCounter: Int = 0
+    var livesCounter: Int = 3
 
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +57,30 @@ class GameViewController: UIViewController {
     }
     
     func setUIByCurrentQuestionNum(index: Int){
-        //get data from network
-        let url = URL(string: questions[index].imageUrl)!
-        questionImage.downloaded(from: url)
-        //get answers from json
-        firstAnswer.setTitle(questions[index].answers[0], for: .normal)
-        secondAnswer.setTitle(questions[index].answers[1], for: .normal)
-        thirdAnswer.setTitle(questions[index].answers[2], for: .normal)
-        forthAnswer.setTitle(questions[index].answers[3], for: .normal)
+        if(currentQuestionNum + 1 < questions.count && livesCounter > 0){
+            //get data from network
+            print("image url ::::: \(questions[index].imageUrl)")
+            let url = URL(string: questions[index].imageUrl)!
+            questionImage.downloaded(from: url)
+            //get answers from json
+            firstAnswer.setTitle(questions[index].answers[0], for: .normal)
+            secondAnswer.setTitle(questions[index].answers[1], for: .normal)
+            thirdAnswer.setTitle(questions[index].answers[2], for: .normal)
+            forthAnswer.setTitle(questions[index].answers[3], for: .normal)
+            // set question number ui label
+            questionNum.text = "\(String(currentQuestionNum + 1))/\(String(questions.count))"
+        }else{
+            // Go back start view with the success counter
+            print("number of lives : \(livesCounter)")
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let viewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            viewController.successCounter = String(successCounter)
+            self.present(viewController, animated:true, completion:nil)
+//            self.performSegue(withIdentifier: "EndGame", sender: self)
+        }
+        
     }
+    
     
     @IBAction func onAnswerTap(sender: UIButton)
     {
@@ -71,13 +90,16 @@ class GameViewController: UIViewController {
         switch sender.tag {
                 case 0:
                     print("do something when first button is tapped")
-            validateAnswer(sender.tag)
+                    validateAnswer(index: sender.tag)
                 case 1:
                     print("do something when second button is tapped")
+                    validateAnswer(index: sender.tag)
                 case 2:
                     print("do something when third button is tapped")
+                    validateAnswer(index: sender.tag)
                 case 3:
                     print("do something when Forth button is tapped")
+                    validateAnswer(index: sender.tag)
                 default:
                     print("default")
             }
@@ -85,9 +107,39 @@ class GameViewController: UIViewController {
     }
     
     func validateAnswer(index: Int){
-        
+        // Correct answer
+        if(questions[currentQuestionNum].correctAnswer == questions[currentQuestionNum].answers[index]){
+            successCounter += 1
+            print("correct")
+
+        }else{
+            updatelivesCounter()
+        }
+        currentQuestionNum += 1
+        setUIByCurrentQuestionNum(index: currentQuestionNum)
+        print("after refresh")
     }
+    
+    
+    func updatelivesCounter(){
+        livesCounter -= 1
+        livesNum.text = "x\(livesCounter)"
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "FirstScreen",
+//            let destination = segue.destination as? ViewController {
+//            print("im hereeeeeee")
+//            // pass through questions to destination view controller
+//            if(currentQuestionNum == questions.count || livesCounter == 0){
+//                destination.successCounter = String(successCounter)
+//            }
+//        }
+//    }
+    
 }
+
+
 
 extension UIImageView {
     func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {

@@ -17,6 +17,7 @@ enum SelectedButtonTag: Int {
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var livesNum: UILabel!
     @IBOutlet weak var questionNum: UILabel!
     @IBOutlet weak var questionImage: UIImageView!
@@ -39,7 +40,8 @@ class GameViewController: UIViewController {
         // Do any additional setup after loading the view.
         print(questions.forEach { print($0.correctAnswer) }) // -> Prints out all the answers
         initButtons()
-        
+        progressView.progress = 0
+        self.progressView.isHidden = false
         setUIByCurrentQuestionNum(index: currentQuestionNum)
     }
     
@@ -53,15 +55,21 @@ class GameViewController: UIViewController {
         secondAnswer.addTarget(self, action: #selector(onAnswerTap(sender:)), for: .touchUpInside)
         thirdAnswer.addTarget(self, action: #selector(onAnswerTap(sender:)), for: .touchUpInside)
         forthAnswer.addTarget(self, action: #selector(onAnswerTap(sender:)), for: .touchUpInside)
+        
 
     }
     
     func setUIByCurrentQuestionNum(index: Int){
         if(currentQuestionNum + 1 < questions.count && livesCounter > 0){
+            // set progress view
+            self.progressView.progress = Float(Float(self.currentQuestionNum  + 1) / Float(self.questions.count))
+//            self.progressView.setProgress(Float((self.currentQuestionNum  + 1) / self.questions.count), animated: false)
             //get data from network
             print("image url ::::: \(questions[index].imageUrl)")
             let url = URL(string: questions[index].imageUrl)!
             questionImage.downloaded(from: url)
+            questionImage.layer.masksToBounds = true
+            questionImage.layer.cornerRadius = questionImage.frame.size.width / 2
             //get answers from json
             firstAnswer.setTitle(questions[index].answers[0], for: .normal)
             secondAnswer.setTitle(questions[index].answers[1], for: .normal)
@@ -72,11 +80,11 @@ class GameViewController: UIViewController {
         }else{
             // Go back start view with the success counter
             print("number of lives : \(livesCounter)")
+            self.progressView.isHidden = true
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let viewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             viewController.successCounter = String(successCounter)
             self.present(viewController, animated:true, completion:nil)
-//            self.performSegue(withIdentifier: "EndGame", sender: self)
         }
         
     }
